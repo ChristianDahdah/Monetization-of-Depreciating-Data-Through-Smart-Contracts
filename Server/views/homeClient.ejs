@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+    canvas {
+        position: absolute;
+    }
+</style>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-geo-projection/0.2.9/d3.geo.projection.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.min.js"></script>
+<script src="satellite.js"></script>
+<script>
+
+    var width = 960,
+        height = 600;
+
+    var radius = height / 2 - 5,
+        scale = radius,
+        velocity = .02;
+
+    var projection = d3.geo.kavrayskiy7()
+        .scale(170)
+        .translate([width / 2, height / 2])
+        .precision(.1);
+
+    var graticule = d3.geo.graticule();
+
+    var canvas = d3.select("body").append("canvas")
+        .attr("width", width)
+        .attr("height", height);
+
+    var canvas2 = d3.select("body").append("canvas")
+        .attr("width", width)
+        .attr("height", height);
+
+    var color = d3.scale.ordinal()
+        .range(["#9e0142","#d53e4f","#f46d43","#fdae61","#fee08b","#ffffbf","#e6f598","#abdda4","#66c2a5","#3288bd","#5e4fa2"]);
+
+    var context = canvas.node().getContext("2d");
+    var context2 = canvas2.node().getContext("2d");
+
+    var path = d3.geo.path()
+        .projection(projection)
+        .context(context);
+
+    var graticule = d3.geo.graticule();
+
+    var timeFormat = d3.time.format("%Y-%m-%d %H:%M");
+
+    d3.json("/mbostock/raw/4090846/world-110m.json", function(error, world) {
+        if (error) throw error;
+
+        var land = topojson.feature(world, world.objects.land);
+
+        context.fillStyle = "#ccc";
+        context.beginPath();
+        path(land);
+        context.fill();
+
+        context.strokeStyle = "#ddd";
+        context.beginPath();
+        path(graticule());
+        context.lineWidth = 1;
+        context.stroke();
+
+        context.beginPath();
+        path(graticule.outline());
+        context.lineWidth = 1;
+        context.stroke();
+
+        d3.text("stations.txt", function(error2, data) {
+            if (error2) throw error2;
+
+            var stations = [];
+            var lines = data.split("\n");
+            lines.forEach(function(line) {
+                if (line.length == 0) return;
+
+                if (line[0] == "1") {
+                    var obj = stations[stations.length-1];
+                    obj.tle1 = line;
+                    return;
+                }
+
+                if (line[0] == "2") {
+                    var obj = stations[stations.length-1];
+                    obj.tle2 = line;
+                    return;
+                }
+
+                stations.push({
+                    name: line.trim()
+                });
+            });
+
+            var now = new Date();
+
+            d3.timer(function(elapsed) {
+                var time = new Date(now.getTime() + 300*elapsed);
+                context2.clearRect(0,0,width,height);
+
+                context2.font = "bold 14px sans-serif";
+                context2.fillStyle = "#333";
+                context2.textAlign = "center";
+                context2.fillText(timeFormat(time),width/2,20);
+
+                stations.forEach(function(d) {
+                    plotsat(d, time);
+                });
+            });
+
+            function plotsat(station, time) {
+                var satrec = satellite.twoline2satrec(station.tle1, station.tle2);
+
+                // increment time by 5 minutes
+
+                var positionAndVelocity = satellite.propagate(
+                    satrec,
+                    time.getUTCFullYear(),
+                    time.getUTCMonth() + 1, // Note, this function requires months in range 1-12.
+                    time.getUTCDate(),
+                    time.getUTCHours(),
+                    time.getUTCMinutes(),
+                    time.getUTCSeconds()
+                );
+
+                if (!positionAndVelocity.position) {
+                    if (time.getTime() - now.getTime() > 1000) return;
+                    console.log("No position data for:");
+                    console.log(station, satrec);
+                    return;
+                }
+
+                var gmst = satellite.gstimeFromDate(
+                    time.getUTCFullYear(),
+                    time.getUTCMonth() + 1, // Note, this function requires months in range 1-12.
+                    time.getUTCDate(),
+                    time.getUTCHours(),
+                    time.getUTCMinutes(),
+                    time.getUTCSeconds()
+                );
+
+                // The position_velocity result is a key-value pair of ECI coordinates.
+                // These are the base results from which all other coordinates are derived.
+                var positionEci = positionAndVelocity.position,
+                    velocityEci = positionAndVelocity.velocity;
+
+                var positionGd = satellite.eciToGeodetic(positionEci, gmst)
+                drawSat(station, positionGd);
+            };
+        });
+
+        function drawSat(sat, pos) {
+            var name = sat.name;
+            var xy = projection([pos.longitude*180/Math.PI, pos.latitude*180/Math.PI]);
+            context2.fillStyle = color(name);
+            context2.beginPath();
+            context2.arc(xy[0],xy[1],2,0,2*Math.PI);
+            context2.fill();
+
+            context2.font = "bold 11px sans-serif";
+            context2.textAlign = "center";
+            context2.fillText(name, xy[0], xy[1]+14);
+        };
+    });
+
+    d3.select(self.frameElement).style("height", height + "px");
+
+</script>

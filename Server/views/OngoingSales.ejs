@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Products</title>
+
+</head>
+
+<body>
+<h1>Products being sold :</h1>
+
+<ul>
+    <%    for (let i = 0; i < Ids.length ; i++) { %>
+        <li> <a href="/ProductInfoSeller/?id=<%= Ids[i].returnValues.referenceId %>"> <%= Ids[i].returnValues.referenceId %> </a>
+            <ul>
+                <li> Price : <%= Ids[i].returnValues.price %>  </li>
+                <li> End Time : <%= Ids[i].returnValues.contractEndTime %>  </li>
+                <li> Description : <%= Ids[i].returnValues.description %>  </li>
+            </ul>
+            <br>
+            <a href="/ManageId/?id=<%= Ids[i].returnValues.referenceId %>"> Manage this Id</a>
+            <br><br>
+        </li>
+    <% }; %>
+</ul>
+
+
+<ul>
+   <li></li>
+
+</ul>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Buyer Menu</title>
+
+</head>
+
+<body>
+<% if (account === undefined) { %>
+    <h1>Welcome to the client interaction!</h1>
+    <p>You are not connected yet, please do so to access the service</p>
+    <a href="/ConnexionForm">Login</a>
+<% } else { %>
+    <h1>Welcome to the Buyer section!</h1>
+    <p>Current account connected : <%= account.address %> </p>
+    <p>what are we doing today?</p>
+    <ul>
+        <li><a href="/ForSale">See products</a></li>
+        <li><a href="/OngoingBuy">Ongoing Transactions</a></li>
+        <li><a href="/Bought">Bought Data</a></li>
+    </ul>
+    <p>Current funds : <%= funds %> SupaeroETH</p>
+<% }  %>
+</body>
+</html>

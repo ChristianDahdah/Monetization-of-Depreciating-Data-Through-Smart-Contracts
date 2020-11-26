@@ -1,0 +1,32 @@
+<div class="container">
+    <p class="message" id="dispute_message"></p>
+    <h1>Dispute item <var id="dispute_id"></var></h1>
+
+    <div id="dispute_notConfirmed">
+
+        <p id="dispute_alreadyDisputed">You have already disputed!</p>
+
+        <div id="dispute_alreadyEncoded">
+            <p>Please confirm you wish to dispute your Key for the reference</p>
+            <button onclick="confirmDispute()">Confirm</button>
+        </div>
+
+        <div id="dispute_refund">
+            <p>Please confirm you wish to withdraw your money from the reference</p>
+            <p>You would receive <var id="dispute_possibleRefund"></var> Ether</p>
+            <button onclick="confirmDispute()">Confirm</button>
+        </div>
+
+    </div>
+
+    <div id="dispute_confirmed">
+        <div id="dispute_successful">
+            <p>Transaction was successful</p>
+            <p>You received <var id="dispute_funds"></var> Ether</p>
+        </div>
+        <div id="dispute_unsuccessful">
+            <p>The dispute was unsuccessful</p>
+        </div>
+    </div>
+
+</div>

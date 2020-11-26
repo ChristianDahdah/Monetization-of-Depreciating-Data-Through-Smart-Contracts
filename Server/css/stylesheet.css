@@ -1,0 +1,248 @@
+html, body {
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/** Basic styling **/
+p {
+    font-size: 15px;
+    margin: 7px;
+}
+
+details {
+    padding: 5px 5px 0;
+}
+
+var {
+    font-style: normal;
+}
+
+/* Overflow if the text is too long */
+body .lm_content {
+    overflow: scroll;
+}
+
+[onClick] {
+    cursor: pointer;
+}
+
+[onClick]:hover {
+    color: #d96629;
+}
+
+/** Wrapper **/
+#wrapper {
+    height: 100%;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+/** Menu **/
+#menuContainer {
+    width: 20%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #222;
+    list-style-type: none;
+}
+
+#menuContainer h1 {
+    border-bottom: 1px solid #000;
+    border-top: 1px solid #333;
+    padding: 10px 5px;
+    color: #BBB;
+    background: #1a1a1a;
+    font: 24px Arial, sans-serif;
+    text-align: center;
+}
+
+#menuContainer h2 {
+    border-bottom: 1px solid #000;
+    border-top: 1px solid #333;
+    padding: 10px 5px;
+    color: #BBB;
+    background: #1a1a1a;
+    font: 20px Arial, sans-serif;
+    text-align: center;
+}
+
+#menuContainer h3 {
+    cursor: pointer;
+    border-top: 1px solid #333;
+    padding: 10px 5px;
+    color: #BBB;
+    background: #222;
+    font: 15px Arial, sans-serif;
+    text-align: center;
+    font-style: italic;
+}
+
+#menuContainer li {
+    border-bottom: 1px solid #000;
+    border-top: 1px solid #333;
+    padding: 10px 5px;
+    color: #BBB;
+    background: #1a1a1a;
+    font: 12px Arial, sans-serif;
+    cursor: pointer;
+
+}
+
+#menuContainer li:hover {
+    background: #111;
+    color: #CCC;
+}
+
+/** Layout **/
+#layoutContainer {
+    color: #fff;
+    width: 80%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 20%;
+    box-shadow: -3px 0 9px 0 rgba(0, 0, 0, 0.4);
+    font-family: Arial, sans-serif;
+    background-color: #222222;
+}
+
+#layoutContainer .container {
+    margin: 15px 10px 10px 10px;
+}
+
+#layoutContainer h1 {
+    font-size: 20px;
+}
+
+#layoutContainer h2 {
+    font-size: 18px;
+}
+
+#layoutContainer h3 {
+    font-size: 16px;
+}
+
+#layoutContainer td {
+    padding: 3px;
+}
+
+#layoutContainer button {
+    padding: 0.2rem;
+    display: inline-block;
+    margin: 10px;
+}
+
+#layoutContainer table {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#layoutContainer ul {
+    list-style-position: inside;
+    padding: 7px;
+}
+
+#layoutContainer ol {
+    counter-reset: node;
+    list-style: none;
+}
+
+#layoutContainer li {
+    font-size: 15px;
+    padding: 7px;
+}
+
+#layoutContainer #blocks_list li {
+    list-style-type: '# ';
+}
+
+#layoutContainer #nodes_list li::before {
+    counter-increment: node;
+    content: "Node " counter(node) ": ";
+}
+
+/* Style inputs, select elements and textareas */
+#layoutContainer input[type=text], select, textarea {
+    width: 100%;
+    padding: 5px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+#layoutContainer input[type=number] {
+    width: 150px;
+    margin: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+/* Style the label to display next to the inputs */
+#layoutContainer label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+}
+
+#sellNew_receipt {
+    text-align: center;
+    font-style: italic;
+    font-size: 15px;
+    margin-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/** Messages to the user **/
+.message {
+    text-align: center;
+    font-style: italic;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.link {
+    font-size: 13px;
+    margin: 7px;
+    font-style: italic;
+}
+
+/* Floating column for labels: 25% width */
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+
+/* Floating column for inputs: 75% width */
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/** To delete? **/
+/* Only serves to close the server */
+a {
+    text-decoration: none;
+    color: #BBB;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Manage <%= product.returnValues.referenceId %> </title>
+
+</head>
+
+<body>
+<h1> Global Info : </h1>
+<p>Total number of clients : <%= total_clients %></p>
+<ul>
+    <li> Id : <%= product.returnValues.referenceId %>  </li>
+    <li> Provider : <%= product.returnValues.provider %>  </li>
+    <li> Inital Price : <%= product.returnValues.initialPrice %>  </li>
+    <li> End Time : <%= product.returnValues.contractEndTime %>  </li>
+    <li> Description : <%= product.returnValues.description %>  </li>
+</ul>
+<br>
+<p>To do : </p>
+<br>
+<ul>
+    <li> Send Encrypted Encoded Key( K2xORKxorK3) : <%= num_clients_step1 %> clients <a href="/SendEncryptedEncodedKey/?id=<%=Id%>">Do </a> </li>
+    <li> Verify hashes and send Decoder Key (K2) : <%= num_clients_step2 %> clients <a href="/SendDecoderKey/?id=<%=Id%>">Do</a> </li>
+
+    <br>
+    <%if (Key == 0) {%>
+        <li> Key not released yet, <a href="/PostRefKey/?id=<%=Id%>">Release Reference Key</a> </li>
+    <%} else {%>
+        <li> Key released :<%= Key %>> <a href="/ProductInfoSeller/?id=<%=Id%>">Check</a> </li>
+
+    <%}%>
+
+</ul>
+<br>
+<br>
+<a href="/WithdrawFundsProvider/?id=<%=Id%>" > Withdraw Funds </a>
+<br>
+<br>
+
+<p>To do Malicious (or "blind") Version  : </p>
+<br>
+<ul>
+    <li> Send Encrypted Encoded Key( K2xORKxorK3) : <%= num_clients_step1 %> clients <a href="/SendEncryptedEncodedKeyMalicious/?id=<%=Id%>">Do </a> </li>
+    <li> Verify hashes and send Decoder Key (K2) : <%= num_clients_step2 %> clients <a href="/SendDecoderKeyMalicious/?id=<%=Id%>">Do</a> </li>
+
+    <br>
+    <%if (Key == 0) {%>
+    <li> Key not released yet, <a href="/PostRefKeyMalicious/?id=<%=Id%>">Release Reference Key</a> </li>
+    <%} else {%>
+        <li> Key released :<%= Key %>> <a href="/ProductInfoSeller/?id=<%=Id%>">Check</a> </li>
+    <%}%>
+
+</ul>
+<a href="/ForSale">Back</a>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>New sale Form</title>
+
+</head>
+
+<body>
+
+<h1> Fill in the form to sell a new product</h1>
+<form action="/PostProduct" method="post">
+    <label for="price">Price</label>
+    <input type="text" id="price" name="price">
+    <br>
+    <label for="minData">Minimum Data</label>
+    <input type="text" id="minData" name="minData">
+    <br>
+    <label for="DurationDays">Reference Duration in days</label>
+    <input type="text" id="DurationDays" name="DurationDays">
+    <label for="DurationHours">Hours :</label>
+    <input type="text" id="DurationHours" name="DurationHours">
+    <label for="DurationMinutes">Minutes :</label>
+    <input type="text" id="DurationMinutes" name="DurationMinutes">
+    <br>
+    <label for="description">Product Description</label>
+    <input type="text" id="description" name="description">
+    <br>
+    <label for="depreciationType">Type of Depreciation</label>
+    <input type="text" id="depreciationType" name="depreciationType">
+    <br>
+    <label for="insuranceDeposit">Insurance Deposit (in Ether)</label>
+    <input type="text" id="insuranceDeposit" name="insuranceDeposit">
+    <br>
+    <input type="submit" value="Submit">
+</form>
+<p>Possible Depreciation types :
+<ul>
+    <li>1: Linear depreciation</li>
+    <li>2: Quadratic depreciation</li>
+    <li>0 or any other integer: no depreciation</li>
+</ul>
+</p>
+
+</body>
+</html>

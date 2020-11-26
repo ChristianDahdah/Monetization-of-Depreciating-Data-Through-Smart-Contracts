@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Seller Menu</title>
+
+</head>
+
+<body>
+<% if (account === undefined) { %>
+    <h1>Welcome to the client interaction!</h1>
+    <p>You are not connected yet, please do so to access the service</p>
+    <a href="/ConnexionForm">Login</a>
+<% } else { %>
+    <h1>Welcome to the Seller section!</h1>
+    <p>Current account connected : <%= account.address %> </p>
+    <p>what are we doing today?</p>
+    <ul>
+        <li><a href="/SellNew">Sell a new product</a></li>
+        <li><a href="/OngoingSales"> Ongoing Sales </a></li>
+
+    </ul>
+    <p>Current funds : <%= funds %> SupaeroETH</p>
+<% }  %>
+</body>
+</html>

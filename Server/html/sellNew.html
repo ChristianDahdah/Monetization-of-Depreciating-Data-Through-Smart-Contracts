@@ -1,0 +1,109 @@
+<div class="container">
+
+    <div id="sellNew_notConnected">
+        <p class="message">You are not connected...</p>
+    </div>
+
+    <div id="sellNew_connected">
+        <h1> Fill in the form to sell a new reference</h1>
+
+        <div class="row">
+            <div class="col-25">
+                <label for="sellNew_price">Price</label>
+            </div>
+            <div class="col-75">
+                <input id="sellNew_price" type="number" min="0" step="any">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label for="sellNew_minData">Minimum Data</label>
+            </div>
+            <div class="col-75">
+                <input id="sellNew_minData" type="number" min="0">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label for="sellNew_durationDays">Reference Duration in days</label>
+            </div>
+            <div class="col-75">
+                <input id="sellNew_durationDays" type="number" min="0">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label for="sellNew_durationHours">Reference Duration in hours</label>
+            </div>
+            <div class="col-75">
+                <input id="sellNew_durationHours" type="number" min="0" max="59">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label for="sellNew_durationMinutes">Reference Duration in minutes</label>
+            </div>
+            <div class="col-75">
+                <input id="sellNew_durationMinutes" type="number" min="0" max="59">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label for="sellNew_description">Reference Description</label>
+            </div>
+            <div class="col-75">
+                <input id="sellNew_description" type="text">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label for="sellNew_insuranceDeposit">Insurance Deposit (in Ether)</label>
+            </div>
+            <div class="col-75">
+                <input id="sellNew_insuranceDeposit" type="number" min="0" step="any">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-25">
+                <label for="sellNew_depreciationType">Type of Depreciation</label>
+            </div>
+            <div class="col-75" id="sellNew_depreciationType">
+                <input id="linear" type="radio" value="1" name="depreciationType">
+                <label for="linear">Linear deprecation</label>
+                <br>
+                <input id="none" type="radio" value="0" name="depreciationType">
+                <label for="none">No deprecation</label>
+                <br>
+                <input id="quadratic" type="radio" value="2" name="depreciationType">
+                <label for="quadratic">Quadratic deprecation</label>
+            </div>
+        </div>
+
+        <button onclick="sellNewReference()">Sell</button>
+
+        <p class="message" id="sellNew_message"></p>
+
+        <table id="sellNew_receipt">
+            <tr>
+                <td>Id of your new reference</td>
+                <td id="sellNew_referenceId">/</td>
+            </tr>
+            <tr>
+                <td>Block number</td>
+                <td id="sellNew_blockNumber">/</td>
+            </tr>
+            <tr>
+                <td>Gas used</td>
+                <td id="sellNew_gasUsed">/</td>
+            </tr>
+        </table>
+    </div>
+
+</div>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Manage Product Buy </title>
+
+</head>
+
+<body>
+<h1> Global Info : </h1>
+<ul>
+    <li> Id : <%= product.referenceId %>  </li>
+    <li> Provider : <%= product.provider %>  </li>
+    <li> Price : <%= product.price %>  </li>
+    <li> End Time : <%= product.contractEndTime %>  </li>
+    <li> Description : <%= product.description %>  </li>
+</ul>
+<br>
+<p>To do : </p>
+<br>
+<ul>
+    <% if (!encryptedEncodedReceived){ %>
+        <li>Waiting for Encrypted Encoded Key</li>
+    <% }else{ %>
+        <% if (!hashSent){ %>
+            <li>Encrypted Encoded Key Received, Send hash: <a href="/SendClientHash/?id=<%= Id %>">Send </a></li>
+        <% }else{ %>
+            <% if (!decoderReceived){ %>
+                <li> Waiting for decoder key</li>
+            <% }else{ %>
+                <li> Decoder Key received : <%= num_event2 %> <a href="/computeK/?id=<%= Id %>">Compute</a></li>
+            <% } %>
+        <% } %>
+    <% } %>
+
+    <br>
+    <li> Set a Dispute or get a refund : <a href="/DisputeConfirmation/?id=<%= Id %>">Dispute</a></li>
+</ul>
+
+<br>
+<p>To do Malicious Version: </p>
+<br>
+<ul>
+    <li> Encrypted Encoded Key Received, Send hash : <%= num_event1 %> clients <a
+                href="/SendClientHashMalicious/?id=<%= Id %>">Do </a></li>
+    <br>
+    <li> Set a Dispute or get a refund : <a href="/DisputeConfirmation/?id=<%= Id %>">Dispute</a></li>
+</ul>
+<a href="/ForSale">Back</a>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

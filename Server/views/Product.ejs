@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Product <%= product.returnValues.referenceId %> </title>
+
+</head>
+
+<body>
+    <h1>Overview of the product : </h1>
+    <ul>
+            <li> Id : <%= product.returnValues.referenceId %>  </li>
+            <li> Provider : <%= product.returnValues.provider %>  </li>
+            <li> Current Price : <%= price %>  </li>
+            <li> End Time : <%= product.returnValues.contractEndTime %>  </li>
+            <li> Description : <%= product.returnValues.description %>  </li>
+            <li> Insurance funds by the provider : <%= product.returnValues.insuranceDeposit %>  </li>
+            <li> Minimum Data : <%= product.returnValues.minimumData %>  </li>
+        <li> Time of Deployment : <%= product.returnValues.deployTime %>  </li>
+        <li> Time of End : <%= product.returnValues.endTime %>  </li>
+        <li> Type of Depreciation : <%= product.returnValues.depreciationType %>  </li>
+    </ul>
+
+    <a href="/ForSale">Back</a>
+    <br>
+    <a href="/buy/?id=<%= product.returnValues.referenceId %> "> Buy </a>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

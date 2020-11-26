@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Success</title>
+
+</head>
+
+<body>
+<% if (receipt) { %>
+    <h1>Succesfully sent the Reference Key to the contract for the product <%=id%>! </h1>
+    <p>Reference Key sent : <%=refKey.toString('hex')%></p>
+<% } else { %>
+<h1>Oops! Something went wrong... </h1>
+<% } %>
+<br>
+<br>
+<a href="/">Home</a>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

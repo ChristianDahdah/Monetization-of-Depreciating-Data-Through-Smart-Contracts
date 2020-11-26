@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Ongoing </title>
+
+</head>
+
+<body>
+<h1>Products being bought :</h1>
+
+<ul>
+    <%    for (let i = 0; i < Ids.length ; i++) { %>
+        <p><a href="/Product/?id=<%=Ids[i].returnValues.referenceId %>"> <%= Ids[i].returnValues.referenceId %> </a></p>
+        <br><br>
+            <a href="/ManageIdBuyer/?id=<%=Ids[i].returnValues.referenceId %>"> Manage this Id</a>
+            <br><br>
+        </p>
+    <% }; %>
+</ul>
+
+<h2>Done Sales:</h2>
+
+<ul>
+    <li></li>
+
+</ul>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

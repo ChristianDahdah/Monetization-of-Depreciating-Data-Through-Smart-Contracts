@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Confirm Dispute</title>
+
+</head>
+
+<body>
+<%if (alreadyDisputed) {%>
+    <h1>You have already disputed!</h1>
+<%} else {%>
+    <%if (alreadyEncoded) {%>
+        <h1>Please confirm you wish to dispute your Key for the product <%= id %> </h1>
+    <%} else {%>
+        <h1>Please confirm you wish to withdraw your money from product <%= id %> </h1>
+        <p> (You will receive : <%=possibleRefund%> Ether) </p>
+    <%}%>
+    <a href="/Dispute/?id=<%=id%>" style="color: red ">Confirm</a>
+    <br>
+    <br>
+<%}%>
+
+
+<a href="/" style="color: green "> Home </a>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

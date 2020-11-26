@@ -1,0 +1,36 @@
+Copy/Paste all the code in a terminal to run 4 nodes automatically:
+
+
+gnome-terminal --window --title="tab 1" --command="bash -c 'cd IBFT-Network/Node-1; besu --data-path=data --genesis-file=../genesis.json --rpc-http-enabled --rpc-http-host="0.0.0.0" --rpc-ws-host="0.0.0.0" --rpc-ws-enabled --rpc-http-api=ETH,NET,IBFT,WEB3,PRIV,PERM,ADMIN --rpc-ws-api=ETH,NET,IBFT,WEB3,PRIV,PERM,ADMIN --host-whitelist="*" --rpc-http-cors-origins=“all”; $SHELL'" \
+--tab --title="tab 2" --command="bash -c 'cd IBFT-Network/Node-2; besu --data-path=data --genesis-file=../genesis.json --bootnodes=enode://39ac2c24db6c07ba5b2b39658d4fd1c9b51c813a4c5975ca53a0080520b7c6f5ce5d0f6e651193d216bfcfccbf378d4601266f8b58219e5f606ef0c0a1a6b4eb@127.0.0.1:30303 --p2p-port=30304 --rpc-http-enabled --rpc-http-api=ETH,NET,IBFT --host-whitelist="*" --rpc-http-cors-origins="all" --rpc-http-port=8547; $SHELL'" \
+--tab --title="tab 3" --command="bash -c 'cd IBFT-Network/Node-3; besu --data-path=data --genesis-file=../genesis.json --bootnodes=enode://39ac2c24db6c07ba5b2b39658d4fd1c9b51c813a4c5975ca53a0080520b7c6f5ce5d0f6e651193d216bfcfccbf378d4601266f8b58219e5f606ef0c0a1a6b4eb@127.0.0.1:30303 --p2p-port=30305 --rpc-http-enabled --rpc-http-api=ETH,NET,IBFT --host-whitelist="*" --rpc-http-cors-origins="all" --rpc-http-port=8548; $SHELL'" \
+--tab --title="tab 4" --command="bash -c 'cd IBFT-Network/Node-4; besu --data-path=data --genesis-file=../genesis.json --bootnodes=enode://39ac2c24db6c07ba5b2b39658d4fd1c9b51c813a4c5975ca53a0080520b7c6f5ce5d0f6e651193d216bfcfccbf378d4601266f8b58219e5f606ef0c0a1a6b4eb@127.0.0.1:30303 --p2p-port=30306 --rpc-http-enabled --rpc-http-api=ETH,NET,IBFT --host-whitelist="*" --rpc-http-cors-origins="all" --rpc-http-port=8549; $SHELL'"
+
+
+
+Notes:
+
+What worked with me:
+
+https://askubuntu.com/questions/46627/how-can-i-make-a-script-that-opens-terminal-windows-and-executes-commands-in-the
+
+What was recommended for new ubuntu:
+
+https://unix.stackexchange.com/questions/177572/how-to-rename-terminal-tab-title-in-gnome-terminal/566383#566383
+
+
+
+
+
+
+
+
+    // TODO Added function, remove later
+
+    function getK2 (uint _referenceId) view public returns(bytes32, bytes32, bytes32, bytes32, bytes32, bool, bool){
+        bytes32 _xor = dataReferences[_referenceId].referenceKey ^ dataReferences[_referenceId].keyDecoder[msg.sender];
+        bytes32 computedHash = keccak256(abi.encode(_xor));
+        bool bl = keccak256(abi.encode(_xor)) != dataReferences[_referenceId].encodedKeyHash[msg.sender];
+        bool bl1 = dataReferences[_referenceId].numberOfData < dataReferences[_referenceId].minimumData;
+        return (dataReferences[_referenceId].referenceKey, dataReferences[_referenceId].keyDecoder[msg.sender], dataReferences[_referenceId].encodedKeyHash[msg.sender], _xor, computedHash, bl, bl1);
+    }

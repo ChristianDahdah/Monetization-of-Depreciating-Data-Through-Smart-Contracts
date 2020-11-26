@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Products</title>
+
+</head>
+
+<body>
+<h1>Should refresh prices every 3 seconds</h1>
+<h1>Available Products :</h1>
+
+<ul>
+    <% for (let i = 0; i < Ids.length ; i++) { %>
+
+        <li><a href="/ProductId/?id=<%= Ids[i].returnValues.referenceId %>"> <%= Ids[i].returnValues.referenceId %> </a>
+            <ul>
+                <li> Provider : <%= Ids[i].returnValues.provider %>  </li>
+                <li  id="price <%= Ids[i].returnValues.referenceId %>">Price is:  <%= Ids[i].returnValues.initialPrice %> </li>
+                <li> End Time : <%= Ids[i].returnValues.contractEndTime %>  </li>
+                <li> Description : <%= Ids[i].returnValues.description %>  </li>
+                <li> Insurance Deposit by the provider : <%= Ids[i].returnValues.insuranceDeposit %>  </li>
+                <li> Minimum Data : <%= Ids[i].returnValues.minimumData %>  </li>
+                <li> Time of Deployment : <%= Ids[i].returnValues.deployTime %>  </li>
+                <li> Time of End : <%= Ids[i].returnValues.endTime %>  </li>
+                <li> Type of Depreciation : <%= Ids[i].returnValues.depreciationType %>  </li>
+            </ul>
+        </li>
+    <% }; %>
+
+</ul>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+

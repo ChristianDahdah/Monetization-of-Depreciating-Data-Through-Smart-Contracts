@@ -1,0 +1,7 @@
+Simple Contract Address : 0x42699A7612A82f1d9C36148af9C77354759b210b //// 0x3484B20600854091C166C062FacAd700123f5f71'
+
+////////////////// Contracts, abis and bins can be found in text.txt
+SafeMath : '0xa50a51c09a5c451C52BB714527E1974b686D8e77
+Ownable : '0x9a3DBCa554e9f6b9257aAa24010DA8377C57c17e'
+
+Provider : '0x42699A7612A82f1d9C36148af9C77354759b210b'

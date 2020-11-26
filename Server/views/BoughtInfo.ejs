@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Bought Info</title>
+
+</head>
+
+<body>
+<h1>Your purchases:</h1>
+
+<ul>
+    <%    for (let i = 0; i < Ids.length ; i++) { %>
+        <li> <a href="/computeK/?id=<%= Ids[i].returnValues.referenceId %>"> <%= Ids[i].returnValues.referenceId %> </a></li>
+    <% }; %>
+
+</ul>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
