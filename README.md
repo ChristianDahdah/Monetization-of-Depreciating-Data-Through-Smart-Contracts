@@ -1,5 +1,5 @@
-# Desciption
-A developed smart Contract enabling the monetization of depreciating data for crowd-sourced platforms. <br>
+# Description
+A developed Smart Contract enabling the monetization of depreciating data for crowd-sourced platforms. <br>
 Inspired by TruSat's vision, the project is applied to the exchange of space debris.
 
 Smart Contracts: Christian Dahdah (github: ChristianDahdah), Ziad Kheil (github: Kheil-Z) <br>
