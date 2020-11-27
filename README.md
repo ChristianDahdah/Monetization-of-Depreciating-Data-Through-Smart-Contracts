@@ -32,7 +32,7 @@ Other packages need to be installed, use npm install.
 
 ### Start The Blockchain
 How to launch the 4 nodes <br>
-The full tutorial is available <a href="https://besu.hyperledger.org/en/stable/Tutorials/Private-Network/Create-IBFT-Network/">here<a> , but for a quickstart, use <a href="https://github.com/ColineVL/PIR/tree/master/IBFT-Network">IBFT-Network<a>, and follow these steps:
+The full tutorial is available <a href="https://besu.hyperledger.org/en/stable/Tutorials/Private-Network/Create-IBFT-Network/">here<a> , but for a quickstart, use <a href="https://github.com/ChristianDahdah/Monetization-of-Depreciating-Data-Through-Smart-Contracts/tree/master/IBFT-Network">IBFT-Network<a>, and follow these steps:
   <ol>
     <li>open 4 consoles,cd to the paths Node-1,-2,-3 and -4. </li>
     <li> start by launching the bootnode(Node-1), enter the following command : <br>
@@ -48,11 +48,11 @@ The full tutorial is available <a href="https://besu.hyperledger.org/en/stable/T
   curl -X POST --data '{"jsonrpc":"2.0","method":"net_peerCount","params":[],"id":1}' localhost:8545
   <br>
   
-  To further simplify launching the nodes, you can copy the command in <a href="https://github.com/ColineVL/PIR/tree/master/Start_Nodes_Faster">Start_Nodes_Faster<a>, the previous steps will be done automatically.
+  To further simplify launching the nodes, you can copy the command in <a href="https://github.com/ChristianDahdah/Monetization-of-Depreciating-Data-Through-Smart-Contracts/tree/master/Start_Nodes_Faster">Start_Nodes_Faster<a>, the previous steps will be done automatically.
 
 ### Deploy the Smart Contract
 
-The server's only use being to test and handle the smart contract, you must deploy it before using the server. A NodeJs (<a href="https://github.com/ColineVL/PIR/tree/master/Solidity/Deployment.js">here<a>) file has been added for this, you must simply launch <i>node Deployment.js</i>. If the blockchain is up and running, this will deploy the smart contract to an Ethereum address. Before continuing, please check that this address is the one in <a href="https://github.com/ColineVL/PIR/tree/master/Server/js/EventsModule.js">Events Module<a> and <a href="https://github.com/ColineVL/PIR/tree/master/Server/js/SignedTransactionModule.js">Signed Transaction Module<a> , if not replace these addresses. You can now proceed to Launch the server.
+The server's only use being to test and handle the smart contract, you must deploy it before using the server. A NodeJs (<a href="https://github.com/ChristianDahdah/Monetization-of-Depreciating-Data-Through-Smart-Contracts/tree/master/Solidity/Deployment.js">here<a>) file has been added for this, you must simply launch <i>node Deployment.js</i>. If the blockchain is up and running, this will deploy the smart contract to an Ethereum address. Before continuing, please check that this address is the one in <a href="https://github.com/ChristianDahdah/Monetization-of-Depreciating-Data-Through-Smart-Contracts/tree/master/Server/js/EventsModule.js">Events Module<a> and <a href="https://github.com/ChristianDahdah/Monetization-of-Depreciating-Data-Through-Smart-Contracts/tree/master/Server/js/SignedTransactionModule.js">Signed Transaction Module<a> , if not replace these addresses. You can now proceed to Launch the server.
 
 
 ### Start the Server
@@ -67,7 +67,7 @@ Simply connect to localhost:8089 (or IP_OF_THE_SERVER:8089), using a browser.
 
 You can the navigate through the server and try buying/selling references. To connect, you can use these three test accounts with pre-filled wallets. To correctly test functionnalities out, it is recommended to read the article prior to using this tool, and avoid buying from one self (sell from an account, then from another machine buy from another account).
 
-Test account private keys: (more details in the <a href="https://github.com/ColineVL/PIR/tree/master/IBFT-Network/genesis.json">Genesis<a>
+Test account private keys: (more details in the <a href="https://github.com/ChristianDahdah/Monetization-of-Depreciating-Data-Through-Smart-Contracts/tree/master/IBFT-Network/genesis.json">Genesis<a>
   <ul>
   <li>"8f2a55949038a9610f50fb23b5883af3b4ecb3c3bb792cbcefbd1542c692be63"</li>
   <li>"c87509a1c067bbde78beb793e6fa76530b6382a4c0241e5e4a9ec0a0f44dc0d3"</li>
